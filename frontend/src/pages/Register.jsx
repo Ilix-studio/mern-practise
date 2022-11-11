@@ -1,5 +1,9 @@
 import { FaUser } from "react-icons/fa";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register, reset } from "../features/auth/authSlice";
 
 const Register = () => {
   //Array of object
@@ -11,6 +15,14 @@ const Register = () => {
   });
   //initial data
   const { name, email, password, password2 } = formData;
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const {user, isLoading, isError, isSuccess, message} = useSelector(
+    (state) => state.auth
+  )
+  //We can read data from the store with useSelector
+  
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
