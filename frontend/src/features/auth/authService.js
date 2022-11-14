@@ -1,5 +1,5 @@
 import axios from "axios";
-import { response } from "express";
+
 
 //6.a
 const API_URL = "/api/users/";
